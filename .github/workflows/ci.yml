@@ -1,0 +1,55 @@
+name: Build and test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-15, windows-latest]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version-file: go.mod
+      - uses: actions-rust-lang/setup-rust-toolchain@ecabd13d1c56bd1345c230e542e9144811ad706f # v2.0.0
+        with:
+          toolchain: stable
+          components: rustfmt, clippy
+          cache: true
+      - name: Test Go and Rust
+        if: runner.os != 'Windows'
+        run: make test test-consumer vet
+      - name: Install Rust GNU target
+        if: runner.os == 'Windows'
+        run: rustup target add x86_64-pc-windows-gnu
+      - uses: msys2/setup-msys2@ec48f7c5447b3140e2b088413ae3a55687bccb6e # v2.33.0
+        if: runner.os == 'Windows'
+        with:
+          msystem: MINGW64
+          path-type: inherit
+          install: >-
+            mingw-w64-x86_64-gcc
+            make
+      - name: Windows checks
+        if: runner.os == 'Windows'
+        shell: msys2 {0}
+        env:
+          CARGO_BUILD_TARGET: x86_64-pc-windows-gnu
+          CGO_ENABLED: '1'
+          CC: gcc
+        run: make test test-consumer vet

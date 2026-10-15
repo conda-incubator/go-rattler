@@ -1,0 +1,20 @@
+version: 4
+environments:
+  default:
+    channels:
+    - url: https://conda.anaconda.org/conda-forge/
+    packages:
+      osx-arm64:
+      - conda: https://conda.anaconda.org/conda-forge/osx-arm64/python-3.12.1-h123_0.conda
+      - pypi: https://files.pythonhosted.org/packages/demo-1.0-py3-none-any.whl
+packages:
+- kind: conda
+  name: python
+  version: 3.12.1
+  build: h123_0
+  subdir: osx-arm64
+  url: https://conda.anaconda.org/conda-forge/osx-arm64/python-3.12.1-h123_0.conda
+- kind: pypi
+  name: demo
+  version: '1.0'
+  url: https://files.pythonhosted.org/packages/demo-1.0-py3-none-any.whl
