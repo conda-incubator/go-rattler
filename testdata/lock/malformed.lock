@@ -1,0 +1,8 @@
+version: 7
+platforms:
+- name: linux-64
+environments:
+  default:
+    packages:
+      linux-64:
+      - conda: [unclosed

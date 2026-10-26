@@ -1,0 +1,9 @@
+{
+  "name": "envscout-demo",
+  "version": "1.2.3",
+  "build": "py311_0",
+  "build_number": 0,
+  "subdir": "osx-arm64",
+  "depends": ["python >=3.11"],
+  "license": "MIT"
+}

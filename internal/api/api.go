@@ -13,34 +13,54 @@ package api
 */
 import "C"
 
-// CompareVersions returns the Rust comparison result and its status code.
-func CompareVersions(a, b string) (int, int) {
-	first := C.CBytes([]byte(a))
-	defer C.free(first)
-	second := C.CBytes([]byte(b))
-	defer C.free(second)
-	var result C.int32_t
-	status := C.go_rattler_compare_versions(
-		(*C.uint8_t)(first), C.size_t(len(a)),
-		(*C.uint8_t)(second), C.size_t(len(b)), &result,
-	)
-	return int(result), int(status)
+import (
+	"fmt"
+	"math"
+	"unsafe"
+)
+
+// JSON runs one generic JSON operation through the Rust bridge. The returned
+// bytes are a Go-owned copy of the response; Rust memory is always released.
+// On a non-zero status the bytes hold the Rust {"error": "..."} envelope and
+// err is a *Status describing it.
+func JSON(operation uint32, input []byte) ([]byte, error) {
+	var inputPtr *C.uint8_t
+	if len(input) > 0 {
+		cin := C.CBytes(input)
+		defer C.free(cin)
+		inputPtr = (*C.uint8_t)(cin)
+	}
+	var output C.JsonBuffer
+	defer C.go_rattler_json_free(&output)
+	status := C.go_rattler_json(C.uint32_t(operation), inputPtr, C.size_t(len(input)), &output)
+	if uint64(output.len) > uint64(math.MaxInt) || (output.len != 0 && output.data == nil) {
+		return nil, &Status{Operation: operation, Code: 4, Body: []byte(`{"error":"invalid native response buffer"}`)}
+	}
+	body := copyBuffer(&output)
+	if status != C.GO_RATTLER_STATUS_OK {
+		return body, &Status{Operation: operation, Code: int(status), Body: body}
+	}
+	return body, nil
 }
 
-// LockEnvironmentCounts returns counts and the Rust lookup status code.
-func LockEnvironmentCounts(lockPath, name, platform string) (int, int, int) {
-	path := C.CBytes([]byte(lockPath))
-	defer C.free(path)
-	env := C.CBytes([]byte(name))
-	defer C.free(env)
-	target := C.CBytes([]byte(platform))
-	defer C.free(target)
-	var conda, pypi C.uint32_t
-	status := C.go_rattler_lock_environment_counts(
-		(*C.uint8_t)(path), C.size_t(len(lockPath)),
-		(*C.uint8_t)(env), C.size_t(len(name)),
-		(*C.uint8_t)(target), C.size_t(len(platform)),
-		&conda, &pypi,
-	)
-	return int(conda), int(pypi), int(status)
+// copyBuffer copies the Rust-owned bytes into Go memory. A NULL buffer yields nil.
+func copyBuffer(buf *C.JsonBuffer) []byte {
+	if buf.data == nil || buf.len == 0 {
+		return nil
+	}
+	src := unsafe.Slice((*byte)(unsafe.Pointer(buf.data)), int(buf.len))
+	out := make([]byte, len(src))
+	copy(out, src)
+	return out
+}
+
+// Status reports a non-success JSON bridge status. Body holds the raw response.
+type Status struct {
+	Operation uint32
+	Code      int
+	Body      []byte
+}
+
+func (s *Status) Error() string {
+	return fmt.Sprintf("native operation %d failed with status %d", s.Operation, s.Code)
 }

@@ -29,7 +29,6 @@ jobs:
       - uses: actions-rust-lang/setup-rust-toolchain@ecabd13d1c56bd1345c230e542e9144811ad706f # v2.0.0
         with:
           toolchain: stable
-          components: rustfmt, clippy
           cache: true
       - name: Test Go and Rust
         if: runner.os != 'Windows'
@@ -52,4 +51,5 @@ jobs:
           CARGO_BUILD_TARGET: x86_64-pc-windows-gnu
           CGO_ENABLED: '1'
           CC: gcc
+          CARGO_TARGET_X86_64_PC_WINDOWS_GNU_LINKER: gcc
         run: make test test-consumer vet

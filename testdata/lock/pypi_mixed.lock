@@ -1,0 +1,30 @@
+version: 7
+platforms:
+- name: linux-64
+  virtual-packages:
+  - __unix=0=0
+environments:
+  default:
+    channels:
+    - url: https://conda.anaconda.org/conda-forge/
+    indexes:
+    - "https://pypi.org/simple"
+    packages:
+      linux-64:
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/python-3.12.1-h123_0.conda
+      - pypi: https://files.pythonhosted.org/packages/Demo_Pkg-1.0-py3-none-any.whl
+      - pypi: https://files.pythonhosted.org/packages/norm_me-1.0.0-py3-none-any.whl
+packages:
+- conda: https://conda.anaconda.org/conda-forge/linux-64/python-3.12.1-h123_0.conda
+  sha256: "1111111111111111111111111111111111111111111111111111111111111111"
+  md5: "22222222222222222222222222222222"
+  depends:
+  - zlib >=1.2
+- pypi: https://files.pythonhosted.org/packages/Demo_Pkg-1.0-py3-none-any.whl
+  name: Demo_Pkg
+  version: "1.0"
+  sha256: "5555555555555555555555555555555555555555555555555555555555555555"
+- pypi: https://files.pythonhosted.org/packages/norm_me-1.0.0-py3-none-any.whl
+  name: norm_me
+  version: "1.0.0"
+  sha256: "6666666666666666666666666666666666666666666666666666666666666666"
