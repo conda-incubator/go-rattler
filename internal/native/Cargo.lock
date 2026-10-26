@@ -483,8 +483,16 @@ checksum = "e4eba85ea1d0a966a983acd07deee566e67395d2d96b6fb39e62b5a833f1eb0b"
 name = "go-rattler-native"
 version = "0.0.1"
 dependencies = [
- "rattler_conda_version",
+ "base64",
+ "pep440_rs",
+ "pep508_rs",
+ "rattler_conda_types",
  "rattler_lock",
+ "rattler_redaction",
+ "serde",
+ "serde_json",
+ "tempfile",
+ "url",
 ]
 
 [[package]]

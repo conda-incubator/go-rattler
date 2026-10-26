@@ -1,0 +1,31 @@
+{
+  "name": "envscout-demo",
+  "version": "1.2.3",
+  "build": "py311_0",
+  "build_number": 0,
+  "subdir": "osx-arm64",
+  "sha256": "2b8f3b7bd7d0d6d8a0c3e7f2c0e9b4d1a6f5c3e2d1b0a9f8e7d6c5b4a3928170",
+  "md5": "0123456789abcdef0123456789abcdef",
+  "size": 4096,
+  "depends": ["python >=3.11", "libzlib"],
+  "constrains": ["envscout-core <2"],
+  "license": "MIT",
+  "license_family": "MIT",
+  "noarch": null,
+  "fn": "envscout-demo-1.2.3-py311_0.conda",
+  "url": "https://conda.anaconda.org/conda-forge/osx-arm64/envscout-demo-1.2.3-py311_0.conda",
+  "channel": "https://conda.anaconda.org/conda-forge/",
+  "extracted_package_dir": "/opt/pkgs/envscout-demo-1.2.3-py311_0",
+  "package_tarball_full_path": "/opt/pkgs/envscout-demo-1.2.3-py311_0.conda",
+  "requested_spec": "envscout-demo",
+  "requested_specs": ["envscout-demo ==1.2.3"],
+  "files": ["bin/envscout-demo", "lib/python3.11/site-packages/demo.py"],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": [
+      {"_path": "bin/envscout-demo", "path_type": "hardlink", "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "size_in_bytes": 1024, "file_mode": "text"},
+      {"_path": "lib/python3.11/site-packages/demo.py", "path_type": "hardlink", "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "size_in_bytes": 512}
+    ]
+  },
+  "link": {"source": "/opt/pkgs/envscout-demo-1.2.3-py311_0", "type": 1}
+}
