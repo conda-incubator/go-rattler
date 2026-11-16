@@ -1,0 +1,26 @@
+version: 2
+updates:
+  - package-ecosystem: gomod
+    directories:
+      - /
+      - /testdata/consumer
+    schedule:
+      interval: weekly
+    allow:
+      - dependency-type: all
+
+  - package-ecosystem: cargo
+    directory: /internal/native
+    schedule:
+      interval: weekly
+    allow:
+      - dependency-type: all
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      github-actions:
+        patterns:
+          - "*"
