@@ -7,7 +7,7 @@ package api
 #cgo CFLAGS: -I${SRCDIR}/../native/include
 #cgo LDFLAGS: -lgo_rattler_native
 #cgo darwin LDFLAGS: -framework CoreFoundation -framework Security -framework SystemConfiguration
-#cgo windows LDFLAGS: -ladvapi32 -lbcrypt -lntdll -luserenv -lws2_32
+#cgo windows LDFLAGS: -ladvapi32 -lbcrypt -ldbghelp -lntdll -lsynchronization -luserenv -lws2_32
 #include "go_rattler.h"
 #include <stdlib.h>
 */
