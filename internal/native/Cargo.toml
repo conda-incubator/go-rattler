@@ -11,8 +11,8 @@ crate-type = ["staticlib"]
 
 [dependencies]
 base64 = { version = "=0.23.1" }
-rattler_conda_types = { version = "=0.57.0", default-features = false }
-rattler_lock = { version = "=0.34.7", default-features = false }
+rattler_conda_types = { version = "=0.58.4", default-features = false }
+rattler_lock = { version = "=0.34.15", default-features = false }
 pep440_rs = "=0.7.3"
 pep508_rs = "=0.9.2"
 rattler_redaction = { version = "=0.2.7", default-features = false }
