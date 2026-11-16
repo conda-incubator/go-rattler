@@ -251,9 +251,9 @@ dependencies = [
 
 [[package]]
 name = "dirs"
-version = "6.0.0"
+version = "7.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c3e8aa94d75141228480295a7d0e7feb620b1a5ad9f12bc40be62411e38cce4e"
+checksum = "8d57d423b3c82e89b9a24ca3091fee61f456a26edbd28d26c65906f4bc1dcd8f"
 dependencies = [
  "dirs-sys",
 ]
@@ -322,9 +322,9 @@ dependencies = [
 
 [[package]]
 name = "fancy-regex"
-version = "0.18.0"
+version = "0.20.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e1e1dacd0d2082dfcf1351c4bdd566bbe89a2b263235a2b50058f1e130a47277"
+checksum = "0a2e16b9a584b602f1e0e5e22c30ca0906786088c27500653e432d086def8b53"
 dependencies = [
  "bit-set",
  "regex-automata",
@@ -339,9 +339,9 @@ checksum = "da7c62ceae207dd37ea5b845da6a0696c799f85e97da1ab5b7910be3c1c80223"
 
 [[package]]
 name = "file_url"
-version = "0.3.2"
+version = "0.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5e68d9ad067554ef18d79494f0e0bcddaf263f41b0126eb7a937f9e942fcbbd8"
+checksum = "ec49f140842acf886ff3e4fd47600ffdbb5f1b1ba70f6775880e688837a0b174"
 dependencies = [
  "itertools 0.15.0",
  "percent-encoding",
@@ -1012,9 +1012,9 @@ checksum = "f8dcc9c7d52a811697d2151c701e0d08956f92b0e24136cf4cf27b57a6a0d9bf"
 
 [[package]]
 name = "rattler_conda_types"
-version = "0.57.0"
+version = "0.58.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7f309cd92e2cf0f687e598142273fbc1d6870c5124212cc0088a555d50fcbadb"
+checksum = "8f3c6b82b2e642bbf3dc78206129e4f4fb226c1f8a7c74a40a4ed2748ada96a6"
 dependencies = [
  "ahash",
  "core-foundation",
@@ -1055,9 +1055,9 @@ dependencies = [
 
 [[package]]
 name = "rattler_conda_version"
-version = "0.2.0"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ee922b54cd30c198e93c542096a0d671cefba1a97600768b2ec4af3c11c44f55"
+checksum = "a7f8c034dd32a85f9edcc1aac1434b6ec026c3a67a93de11456c7d81e210201a"
 dependencies = [
  "itertools 0.15.0",
  "nom",
@@ -1086,9 +1086,9 @@ dependencies = [
 
 [[package]]
 name = "rattler_lock"
-version = "0.34.7"
+version = "0.34.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e80104df6c5ee0d1bdc22d9992ebf8e1928473abed288e1503de26a3bfe18f99"
+checksum = "598b2b27b27f0739b87083ceba987e35b009ca10bb011244a582c0da84cc66ae"
 dependencies = [
  "ahash",
  "file_url",
@@ -1116,12 +1116,12 @@ dependencies = [
 
 [[package]]
 name = "rattler_macros"
-version = "1.3.0"
+version = "1.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5411dbe875bed62113e04eb4006d78b4570dac1038a009186eb7ccfc14e0006a"
+checksum = "a42690ed14c8b9d610aafc0f2eb715b85c05f3d3a2a307896e4f8d820aaa284f"
 dependencies = [
  "quote",
- "syn 2.0.119",
+ "syn 3.0.10",
 ]
 
 [[package]]
@@ -1135,9 +1135,9 @@ dependencies = [
 
 [[package]]
 name = "rattler_solve"
-version = "11.2.2"
+version = "13.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a2219ae2a14e628a165282dfee6ce430add37c1f0f2cb54ca4d9b4b0a7560b7f"
+checksum = "fd9e3e60336e4ba8789b01fe9f35ffdb321735ff9fa244eef9a3207c67854d03"
 dependencies = [
  "hex",
  "itertools 0.15.0",
@@ -1416,12 +1416,11 @@ checksum = "f8fadd59c855ef2080decdef8ff161eb6661b86933c9d82e5ba29dc602a55aba"
 
 [[package]]
 name = "simd-json"
-version = "0.17.3"
+version = "0.19.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e32d7ab2678282d21e53374fbead7119b7eacbede73685dcaac472870a29a11c"
+checksum = "e8f2e4d523646f7da6dde3983bd18ede0babc21c258ab708b3dd93ea0259719d"
 dependencies = [
  "halfbrown",
- "ref-cast",
  "serde",
  "serde_json",
  "simdutf8",
@@ -1647,9 +1646,9 @@ dependencies = [
 
 [[package]]
 name = "typed-path"
-version = "0.12.4"
+version = "0.13.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "54ec2755506471f54baf5e4bb5499d8e510cc1caf271270e778a736bd2d7336c"
+checksum = "9ce898823d8cd0f028662d2f349694b1af0a5cc9be83f1d213a00d3147445e1e"
 
 [[package]]
 name = "typeid"
@@ -1714,9 +1713,9 @@ checksum = "b6c140620e7ffbb22c2dee59cafe6084a59b5ffc27a8859a5f0d494b5d52b6be"
 
 [[package]]
 name = "value-trait"
-version = "0.12.2"
+version = "0.12.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f3f4b4a98dfe54bc9ed3641af7ffcb837240269627dbd5cb047d13daa39736cc"
+checksum = "545a3d7089f11f1741d12963c057adf9443fc24325110a6a6daf582e825fd51b"
 dependencies = [
  "float-cmp",
  "halfbrown",
